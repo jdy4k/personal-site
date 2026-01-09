@@ -1,0 +1,9 @@
+<h1>{{ .Site.Params.author }}</h1>
+<div class="info-container">
+  {{ if reflect.IsSlice .Site.Params.info }}
+  <div class="info-text">{{ range .Site.Params.info }}{{ . | markdownify }}<br>{{ end}}</div>
+  {{ else }}
+  <div class="info-text">{{ .Site.Params.info | markdownify }}</div>
+  {{ end }}
+  <a href="/resume/" class="resume-button">Resume</a>
+</div>

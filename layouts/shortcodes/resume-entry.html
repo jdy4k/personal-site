@@ -1,0 +1,78 @@
+{{/* 
+  Resume entry shortcode
+  
+  Parameters:
+  - title: Job title or position name
+  - subtitle: Workplace or organization name
+  - subtitle_url: (optional) URL for the subtitle link (GitHub links will show GitHub icon, others show arrow icon)
+  - subtitle2: (optional) Second subtitle line (e.g., for multiple degrees)
+  - extra1: First extra info (e.g., "Part-time - Remote")
+  - extra2: Second extra info (e.g., "Aug 2025 - present")
+  - repo: (optional) Repository URL - if provided, displays a button with the repo path in the right column
+  - brief: Short description of the entry
+  - skills: (optional) Skills or technologies used (e.g., "R • Nextflow • Bioinformatics • Statistics")
+  - summary_title: (optional) Title for the summary/details section (default: "Show extended summary")
+  - summary_content: Content for the details section
+  - is_complete: (optional) If true, adds "complete" class to the container
+*/}}
+
+<div class="container-v main{{ if .Get "is_complete" }} complete{{ end }}">
+  <div class="container-h">
+    <div class="container-v left">
+      <div class="title">{{ .Get "title" }}</div>
+      <div class="subtitle">
+        {{ if .Get "subtitle_url" }}
+          {{ .Get "subtitle" }} 
+          {{ $subtitle_url := .Get "subtitle_url" }}
+          {{ if in $subtitle_url "github.com" }}
+            <a href="{{ $subtitle_url }}" target="_blank"><span class="fa-brands fa-git-alt"></span></a>
+          {{ else }}
+            <a href="{{ $subtitle_url }}" target="_blank"><span class="fa-solid fa-arrow-up-right-from-square"></span></a>
+          {{ end }}
+        {{ else }}
+          {{ .Get "subtitle" }}
+        {{ end }}
+      </div>
+      {{ if .Get "subtitle2" }}
+      <div class="subtitle">{{ .Get "subtitle2" }}</div>
+      {{ end }}
+    </div>
+    <div class="container-v right">
+      {{ if .Get "extra1" }}
+      <div class="extra">{{ .Get "extra1" }}</div>
+      {{ end }}
+      {{ if .Get "extra2" }}
+        {{ $extra2 := .Get "extra2" }}
+        {{ $extra2 = replace $extra2 "present" "<span class=\"present\">present</span>" }}
+        <div class="extra">{{ $extra2 | safeHTML }}</div>
+      {{ end }}
+      {{ if .Get "repo" }}
+        {{ $repo := .Get "repo" }}
+        {{ $repo_parts := split $repo ".com/" }}
+        {{ $repo_path := index $repo_parts (sub (len $repo_parts) 1) }}
+        <a href="{{ $repo }}" target="_blank" class="resume-repo-btn">
+          {{ $repo_path }}
+        </a>
+      {{ end }}
+    </div>
+  </div>
+  {{ if .Get "brief" }}
+  <div class="brief">
+    {{ .Get "brief" | markdownify }}
+  </div>
+  {{ end }}
+  {{ if .Get "skills" }}
+  <div class="skills">
+    {{ .Get "skills" }}
+  </div>
+  {{ end }}
+  {{ if .Get "summary_content" }}
+  <div class="sum">
+    <details>
+      <summary>{{ .Get "summary_title" | default "Show extended summary" }}</summary>
+      {{ .Get "summary_content" | replaceRE "\\n" "\n" | markdownify }}
+    </details>
+  </div>
+  {{ end }}
+</div>
+

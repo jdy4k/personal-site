@@ -1,0 +1,396 @@
+// Resume entry styles - adapted for Coder theme
+// Import theme variables
+@import "../../themes/hugo-coder/assets/scss/variables";
+
+// Reduce spacing above first header on resume page
+.content article header {
+  margin-top: 2rem;
+  margin-bottom: 0;
+}
+
+.content article h2:first-of-type {
+  margin-top: 0;
+}
+
+// Homepage info container and resume button
+.about .info-container {
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.about h1 {
+  padding-bottom: 1.2rem;
+}
+
+.resume-button {
+  margin-bottom: 0.5rem;
+}
+
+// Drop shadow for circular avatar
+.avatar img {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+h2 {
+  letter-spacing: 1.5px;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid $fg-color;
+}
+
+.about .info-text {
+  font-weight: 600;
+  line-height: 1.35;
+  margin: 0;
+  
+  br {
+    line-height: 0;
+  }
+}
+
+.navigation-link {
+  letter-spacing: 2px;
+}
+
+.about .resume-button {
+  display: inline-block;
+  padding: 0.4rem 1.6rem;
+  background-color: $fg-color;
+  color: $bg-color;
+  text-decoration: none;
+  border-radius: 0.4rem;
+  font-size: 1.4rem;
+  font-weight: normal;
+  font-family: $font-family;
+  text-transform: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
+
+  &:hover,
+  &:focus {
+    background-color: $link-color;
+    color: $bg-color;
+  }
+}
+
+body.colorscheme-dark {
+  .about .resume-button {
+    background-color: $fg-color-dark;
+    color: $bg-color-dark;
+
+    &:hover,
+    &:focus {
+      background-color: $link-color-dark;
+      color: $bg-color-dark;
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body.colorscheme-auto {
+    .about .resume-button {
+      background-color: $fg-color-dark;
+      color: $bg-color-dark;
+
+      &:hover,
+      &:focus {
+        background-color: $link-color-dark;
+        color: $bg-color-dark;
+      }
+    }
+  }
+}
+
+.container-v {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.left {
+  min-width: 0; // Allow grid item to shrink below content size
+  overflow-wrap: break-word;
+}
+
+.right {
+  white-space: nowrap;
+  text-align: right;
+  
+  @media (max-width: 768px) {
+    white-space: normal;
+    margin-top: 5px;
+    text-align: left;
+  }
+}
+
+.main {
+  border-left: 5px solid $link-color; // Coder blue (replacing Nord green) - thicker
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.02);
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transform-origin: left center;
+  
+  &:hover {
+    transform: scale(1.01);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.complete {
+  border-left: 5px solid #888888; // Coder alt background color
+}
+
+.container-h {
+  display: grid;
+  grid-template-columns: 500px auto;
+  gap: 20px;
+  align-items: start;
+  line-height: 1.2em;
+  
+  @media (max-width: 900px) {
+    grid-template-columns: minmax(200px, 350px) auto;
+  }
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 0;
+  }
+}
+
+.title {
+  font-weight: bold;
+}
+
+.subtitle {
+  font-size: 17px;
+  color: darken($fg-color, 10%);
+}
+
+.subtitle a {
+  color: $link-color;
+  text-decoration: none;
+}
+
+.subtitle a:visited {
+  color: $link-color;
+  text-decoration: none;
+}
+
+.subtitle a:hover {
+  color: darken($link-color, 10%);
+  opacity: 0.7;
+}
+
+.extra {
+  font-size: 14px;
+  color: darken($fg-color, 10%);
+  margin-bottom: 0;
+  line-height: 1.3;
+  margin-top: 0;
+}
+
+.brief {
+  font-size: 14px;
+  margin-top: 8px;
+  margin-bottom: -4px;
+  line-height: 1.5;
+  color: lighten($fg-color, 25%);
+}
+
+.skills {
+  font-size: 14px;
+  margin-top: 2px;
+  margin-bottom: 0;
+  margin-left: 5px;
+  color: lighten($fg-color, 25%);
+  font-weight: 500;
+  font-style: italic;
+}
+
+.sum {
+  font-size: 14px;
+  line-height: 1.4em;
+  margin-top: 9px;
+  margin-bottom: 0;
+  color: lighten($fg-color, 10%);
+  
+  // Ensure all markdown-generated content uses consistent styling
+  * {
+    line-height: 1.4em;
+  }
+  
+  ul, ol {
+    margin-left: 0.5em;
+    padding-left: 0.5em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+  
+  p {
+    margin-bottom: 0.5em;
+    margin-top: 0;
+  }
+}
+
+details {
+  padding: 0 0 0;
+  margin-bottom: 0;
+  
+  > *:last-child {
+    margin-bottom: 0 !important;
+  }
+}
+
+summary {
+  font-weight: bold;
+  font-size: 12px;
+  margin: -0.5em -0.5em 0;
+  padding: 0.5em;
+}
+
+.fa-arrow-up-right-from-square {
+  font-size: 14px;
+  margin-left: 5px;
+  vertical-align: middle;
+  position: relative;
+  top: -2px;
+}
+
+.subtitle .fa-git-alt {
+  font-size: 17px;
+  margin-left: 5px;
+  vertical-align: middle;
+  position: relative;
+  top: -2px;
+}
+
+// Dark mode support
+body.colorscheme-dark {
+  .main {
+    background-color: darken($bg-color-dark, 2%);
+    border-left: 5px solid $link-color-dark;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    
+    &:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+  }
+  
+  .complete {
+    border-left-color: $alt-bg-color-dark;
+  }
+  
+  .subtitle {
+    color: darken($fg-color-dark, 10%);
+  }
+  
+  .subtitle a {
+    color: $link-color-dark;
+  }
+  
+  .subtitle a:hover {
+    color: lighten($link-color-dark, 10%);
+  }
+  
+  .extra {
+    color: darken($fg-color-dark, 10%);
+  }
+  
+  .brief {
+    color: lighten($fg-color-dark, 25%);
+  }
+  
+  .skills {
+    color: lighten($fg-color-dark, 25%);
+  }
+  
+  .sum {
+    color: lighten($fg-color-dark, 10%);
+  }
+  
+  .fa-solid.fa-adjust.fa-fw {
+    background-color: rgba(255, 255, 255, 0.05);
+    
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+  
+  .avatar img {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body.colorscheme-auto {
+    .main {
+      background-color: rgba(255, 255, 255, 0.02);
+      border-left: 5px solid $link-color-dark;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      
+      &:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      }
+    }
+    
+    .complete {
+      border-left: 5px solid $alt-bg-color-dark;
+    }
+    
+    .subtitle {
+      color: darken($fg-color-dark, 10%);
+    }
+    
+    .subtitle a {
+      color: $link-color-dark;
+    }
+    
+    .subtitle a:hover {
+      color: lighten($link-color-dark, 10%);
+    }
+    
+    .extra {
+      color: darken($fg-color-dark, 10%);
+    }
+    
+    .brief {
+      color: lighten($fg-color-dark, 25%);
+    }
+    
+    .skills {
+      color: lighten($fg-color-dark, 25%);
+    }
+    
+    .sum {
+      color: lighten($fg-color-dark, 10%);
+    }
+    
+    .fa-solid.fa-adjust.fa-fw {
+      background-color: rgba(255, 255, 255, 0.05);
+      
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+    }
+    
+    .avatar img {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+  }
+}
+
