@@ -55,8 +55,123 @@ h2 {
   letter-spacing: 2px;
 }
 
-.footer {
-  visibility: hidden;
+// Hide navigation bar and menu button on homepage
+body:has(.resume-section-home) .navigation {
+  display: none;
+}
+
+body:has(.resume-section-home) .menu-button,
+body:has(.resume-section-home) #menu-toggle {
+  display: none;
+}
+
+// Make footer visible with same light grey background as resume section
+body:has(.resume-section-home) .footer {
+  visibility: visible;
+  background-color: rgba(0, 0, 0, 0.05);
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+// Ensure content doesn't have bottom margin when resume section is present
+body:has(.resume-section-home) .content {
+  margin-bottom: 0 !important;
+}
+
+// Chevron at bottom of homepage
+.scroll-chevron-bottom {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  animation: bounce 2s infinite;
+  z-index: 100;
+  
+  i {
+    font-size: 2rem;
+    color: $fg-color;
+  }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-10px); }
+}
+
+// Resume section on homepage with darker background
+// Ensure content container stacks vertically when resume section is present
+.content:has(.resume-section-home) {
+  flex-direction: column;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+// Make about section fill viewport height
+.content:has(.resume-section-home) .container.centered {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 0rem;
+  padding-bottom: 12rem;
+}
+
+.resume-section-home {
+  width: 100%;
+  flex-basis: 100%;
+  background-color: rgba(0, 0, 0, 0.05);
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  margin-top: 0;
+  margin-bottom: 0;
+  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+  
+  article {
+    max-width: 90rem;
+    margin: 0 auto;
+    width: 100%;
+  }
+}
+
+// Dark mode support
+body.colorscheme-dark {
+  .scroll-chevron-bottom i {
+    color: $fg-color-dark;
+  }
+  
+  .resume-section-home {
+    background-color: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  body:has(.resume-section-home) .footer {
+    background-color: rgba(255, 255, 255, 0.05);
+    margin-top: 0 !important;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body.colorscheme-auto {
+    .scroll-chevron-bottom i {
+      color: $fg-color-dark;
+    }
+    
+    .resume-section-home {
+      background-color: rgba(255, 255, 255, 0.05);
+      box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.3);
+    }
+    
+    body:has(.resume-section-home) .footer {
+      background-color: rgba(255, 255, 255, 0.05);
+      margin-top: 0 !important;
+    }
+  }
 }
 
 .about .resume-button {
@@ -139,7 +254,7 @@ body.colorscheme-dark {
   border-top-right-radius: 8px;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
-  background-color: rgba(0, 0, 0, 0.02);
+  background-color: #f4f4f4;
   padding-left: 15px;
   padding-right: 15px;
   padding-top: 12px;
