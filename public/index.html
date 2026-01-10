@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=11111&amp;path=livereload" data-no-instant defer></script>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <title>Jack Hosler</title>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,7 +20,7 @@
   <meta name="twitter:title" content="Jack Hosler">
   <meta name="twitter:description" content="Jack Hosler&#39;s personal website">
 
-<meta property="og:url" content="http://localhost:11111/">
+<meta property="og:url" content="http://localhost:1313/">
   <meta property="og:site_name" content="Jack Hosler">
   <meta property="og:title" content="Jack Hosler">
   <meta property="og:description" content="Jack Hosler&#39;s personal website">
@@ -30,7 +30,7 @@
 
 
 
-<link rel="canonical" href="http://localhost:11111/">
+<link rel="canonical" href="http://localhost:1313/">
 
 
 <link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
@@ -93,7 +93,7 @@
     <nav class="navigation">
   <section class="container">
     
-    <a class="navigation-title" href="http://localhost:11111/">
+    <a class="navigation-title" href="http://localhost:1313/">
       Jack Hosler
     </a>
     
@@ -119,9 +119,10 @@
 
     <div class="content">
       
-  <section class="container centered">
-  <div class="about">
-    
+  <section class="about-section-home">
+  <div class="container centered">
+    <div class="about">
+      
   
     <div class="avatar"><img src="/images/avatar.jpg" alt="avatar"></div>
   
@@ -129,7 +130,7 @@
 
 
 
-    <h1>Jack Hosler</h1>
+      <h1>Jack Hosler</h1>
 <div class="info-container">
   
   <div class="info-text">Bioinformatics<br></div>
@@ -137,7 +138,7 @@
 </div>
 
 
-    
+      
 <ul>
   
     
@@ -166,10 +167,11 @@
   
 </ul>
 
+    </div>
+
+    
+
   </div>
-
-  
-
 </section>
 
 <div class="scroll-chevron-bottom" id="scroll-chevron">
@@ -554,10 +556,9 @@
 document.addEventListener('DOMContentLoaded', function() {
   const chevron = document.getElementById('scroll-chevron');
   const resumeSection = document.getElementById('resume-section');
-  const aboutSection = document.querySelector('.container.centered');
+  const aboutSection = document.querySelector('.about-section-home');
   
   if (!chevron || !resumeSection || !aboutSection) return;
-  
   
   function calculateResumePosition() {
     const windowHeight = window.innerHeight;
@@ -565,8 +566,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const scrollY = window.scrollY || window.pageYOffset;
     const aboutBottom = aboutRect.bottom + scrollY;
     
-    
-    
+
     const contentTop = 0; 
     const minResumeStart = contentTop + windowHeight;
     const spacing = Math.max(minResumeStart - aboutBottom, 0);
@@ -574,17 +574,14 @@ document.addEventListener('DOMContentLoaded', function() {
     resumeSection.style.marginTop = spacing + 'px';
   }
   
-  
   calculateResumePosition();
   window.addEventListener('resize', calculateResumePosition);
-  
   
   window.addEventListener('load', calculateResumePosition);
   
   function handleScroll() {
     const scrollY = window.scrollY || window.pageYOffset;
     const windowHeight = window.innerHeight;
-    
     
     if (scrollY > windowHeight * 0.5) {
       chevron.style.opacity = '0';

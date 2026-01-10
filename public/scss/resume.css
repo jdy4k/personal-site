@@ -81,7 +81,14 @@ body:has(.resume-section-home) .content {
   margin-top: 0;
   margin-bottom: 0; }
 
-.content:has(.resume-section-home) .container.centered {
+.about-section-home {
+  background-color: #fafafa;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  position: relative;
+  z-index: 2;
+  width: 100%; }
+
+.content:has(.resume-section-home) .about-section-home .container.centered {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -98,7 +105,8 @@ body:has(.resume-section-home) .content {
   padding-bottom: 4rem;
   margin-top: 0;
   margin-bottom: 0;
-  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1); }
+  position: relative;
+  z-index: 1; }
   .resume-section-home article {
     max-width: 90rem;
     margin: 0 auto;

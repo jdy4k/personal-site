@@ -1,13 +1,15 @@
-<section class="container centered">
-  <div class="about">
-    {{ partialCached "home/avatar.html" . }}
+<section class="about-section-home">
+  <div class="container centered">
+    <div class="about">
+      {{ partialCached "home/avatar.html" . }}
 
-    {{ partialCached "home/author.html" . }}
+      {{ partialCached "home/author.html" . }}
 
-    {{ partialCached "home/social.html" . }}
+      {{ partialCached "home/social.html" . }}
+    </div>
+
+    {{ partialCached "home/extensions.html" . }}
   </div>
-
-  {{ partialCached "home/extensions.html" . }}
 </section>
 
 <div class="scroll-chevron-bottom" id="scroll-chevron">
@@ -32,19 +34,17 @@
 document.addEventListener('DOMContentLoaded', function() {
   const chevron = document.getElementById('scroll-chevron');
   const resumeSection = document.getElementById('resume-section');
-  const aboutSection = document.querySelector('.container.centered');
+  const aboutSection = document.querySelector('.about-section-home');
   
   if (!chevron || !resumeSection || !aboutSection) return;
   
-  // Calculate and set resume section position based on screen height
   function calculateResumePosition() {
     const windowHeight = window.innerHeight;
     const aboutRect = aboutSection.getBoundingClientRect();
     const scrollY = window.scrollY || window.pageYOffset;
     const aboutBottom = aboutRect.bottom + scrollY;
     
-    // Calculate spacing: ensure resume starts at least one viewport height from top
-    // Position it right after the about section, but ensure it's below viewport
+
     const contentTop = 0; // Top of the page
     const minResumeStart = contentTop + windowHeight;
     const spacing = Math.max(minResumeStart - aboutBottom, 0);
@@ -52,18 +52,15 @@ document.addEventListener('DOMContentLoaded', function() {
     resumeSection.style.marginTop = spacing + 'px';
   }
   
-  // Calculate position on load and resize
   calculateResumePosition();
   window.addEventListener('resize', calculateResumePosition);
   
-  // Recalculate after images load (for avatar)
   window.addEventListener('load', calculateResumePosition);
   
   function handleScroll() {
     const scrollY = window.scrollY || window.pageYOffset;
     const windowHeight = window.innerHeight;
     
-    // Hide chevron when scrolled past initial viewport
     if (scrollY > windowHeight * 0.5) {
       chevron.style.opacity = '0';
       chevron.style.pointerEvents = 'none';

@@ -111,8 +111,17 @@ body:has(.resume-section-home) .content {
   margin-bottom: 0;
 }
 
+// About section wrapper with shadow casting down
+.about-section-home {
+  background-color: $bg-color;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
 // Make about section fill viewport height
-.content:has(.resume-section-home) .container.centered {
+.content:has(.resume-section-home) .about-section-home .container.centered {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -130,7 +139,8 @@ body:has(.resume-section-home) .content {
   padding-bottom: 4rem;
   margin-top: 0;
   margin-bottom: 0;
-  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1;
   
   article {
     max-width: 90rem;
