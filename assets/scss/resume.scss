@@ -40,15 +40,11 @@
 
 .container-h {
   display: grid;
-  grid-template-columns: 500px auto;
+  grid-template-columns: 60% auto;
   gap: 20px;
   align-items: start;
   line-height: 1.2em;
   margin-bottom: 4px;
-  
-  @media (max-width: 900px) {
-    grid-template-columns: minmax(200px, 350px) auto;
-  }
   
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
