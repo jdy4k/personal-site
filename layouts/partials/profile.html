@@ -1,0 +1,33 @@
+<div class="profile">
+  {{ with site.Params.avatarUrl }}
+    <img src="{{ . }}" alt="{{ site.Params.author }}" class="avatar-image">
+  {{ end }}
+  
+  <div class="author-info">
+    {{ with site.Params.author }}
+      <h3 class="author-name">{{ . }}</h3>
+    {{ end }}
+    
+    {{ with site.Params.bio }}
+      <p class="author-bio">{{ . }}</p>
+    {{ end }}
+
+    {{ with site.Params.social }}
+      <div class="author-social">
+        {{ range . }}
+          <a href="{{ .url }}" 
+             class="social-link" 
+             title="{{ .name }}"
+             {{ if not (hasPrefix .url "mailto:") }}target="_blank" rel="noopener noreferrer"{{ end }}>
+            <i class="{{ .icon }}"></i>
+          </a>
+        {{ end }}
+      </div>
+    {{ end }}
+
+  </div>
+  
+  <div class="scroll-chevron" onclick="window.scrollTo({top: window.innerHeight + 100, behavior: 'smooth'})">
+    <i class="fa-solid fa-chevron-down"></i>
+  </div>
+</div>

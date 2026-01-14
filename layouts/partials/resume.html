@@ -1,0 +1,29 @@
+<div class="resume-content">
+  {{ with site.Params.resume.work_experience }}
+    <h2>WORK EXPERIENCE</h2>
+    {{ range . }}
+      {{ partial "resume-entry.html" . }}
+    {{ end }}
+  {{ end }}
+
+  {{ with site.Params.resume.projects }}
+    <h2>PROJECTS</h2>
+    {{ range . }}
+      {{ partial "resume-entry.html" . }}
+    {{ end }}
+  {{ end }}
+
+  {{ with site.Params.resume.education }}
+    <h2>EDUCATION</h2>
+    {{ range . }}
+      {{ partial "resume-entry.html" . }}
+    {{ end }}
+  {{ end }}
+
+  {{ with site.Params.resume.service }}
+    <h2>SERVICE</h2>
+    {{ range . }}
+      {{ partial "resume-entry.html" . }}
+    {{ end }}
+  {{ end }}
+</div>

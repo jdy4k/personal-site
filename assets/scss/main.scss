@@ -1,0 +1,150 @@
+@import 'variables';
+@import 'resume';
+@import 'profile';
+
+$profile-width: 620px;
+$mobile-breakpoint: 768px;
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: $bg-2;
+  font-family: "Helvetica";
+}
+
+h2 {
+  font-size: 1.5em;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  border-bottom: 1px solid #000000;
+  margin-top: 1.5em;
+
+  &:first-of-type {
+    margin-top: 0em;
+  }
+  
+  @media (max-width: $mobile-breakpoint) {
+    &:first-of-type {
+      margin-top: -0.25em;
+    }
+  }
+}
+
+.container {
+  display: flex;
+  min-height: 100vh;
+  
+  @media (max-width: $mobile-breakpoint) {
+    display: block;
+  }
+}
+
+.profile {
+  background-color: $bg-1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: $profile-width;
+  height: 100vh;
+  box-shadow: -5px 0 10px grey;
+  z-index: 2;
+  overflow-y: auto;
+  
+  @media (max-width: $mobile-breakpoint) {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    max-height: 100vh;
+    margin-bottom: 100vh; // Creates scroll room to reveal resume behind
+    box-shadow: 0 5px 20px grey;
+    z-index: 2;
+    overflow-y: auto;
+  }
+}
+
+.resume-content {
+  background-color: $bg-2;
+  margin-left: $profile-width;
+  min-height: 100vh;
+  width: calc(100% - #{$profile-width});
+  padding: 20px;
+  box-sizing: border-box;
+  z-index: 0;
+
+  padding-left: 4em;
+  padding-right: 4em;
+  
+  @media (max-width: $mobile-breakpoint) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin-left: 0;
+    margin-top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow-y: hidden; // Disabled by default
+    z-index: 0;
+
+    padding-left: 1em;
+    padding-right: 1em;
+    
+    &.scrollable {
+      overflow-y: auto;
+    }
+  }
+}
+
+// Profile tab - mobile only (shows when profile scrolled away)
+.profile-tab {
+  display: none;
+  
+  @media (max-width: $mobile-breakpoint) {
+    display: none; // Hidden by default, JS shows it
+    position: fixed;
+    top: 0px;
+    right: 15px;
+    padding: 10px 15px;
+    background-color: $bg-2;
+    border-radius: 0px;
+    z-index: 1;
+    cursor: pointer;
+    border: 1px solid $fg-1;
+    
+    &.visible {
+      display: block;
+    }
+  }
+}
+
+// Scroll chevron - mobile only
+.scroll-chevron {
+  display: none;
+  
+  @media (max-width: $mobile-breakpoint) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    font-size: 24px;
+    color: #666;
+    z-index: 10;
+    animation: bounce 2s ease-in-out infinite;
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(10px);
+  }
+}

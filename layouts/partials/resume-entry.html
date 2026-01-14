@@ -1,0 +1,59 @@
+<div class="container-v main{{ if .is_complete }} complete{{ end }}">
+  <div class="container-h">
+    <div class="container-v left">
+      <div class="title">{{ .title }}</div>
+      <div class="subtitle">
+        {{ if .subtitle_url }}
+          {{ .subtitle }} 
+          {{ if in .subtitle_url "github.com" }}
+            <a href="{{ .subtitle_url }}" target="_blank"><span class="fa-brands fa-git-alt"></span></a>
+          {{ else }}
+            <a href="{{ .subtitle_url }}" target="_blank"><span class="fa-solid fa-arrow-up-right-from-square"></span></a>
+          {{ end }}
+        {{ else }}
+          {{ .subtitle }}
+        {{ end }}
+      </div>
+      {{ with .subtitle2 }}
+      <div class="subtitle">{{ . }}</div>
+      {{ end }}
+    </div>
+    <div class="container-v right">
+      {{ with .extra1 }}
+      <div class="extra">{{ . }}</div>
+      {{ end }}
+      {{ if .extra2 }}
+        {{ $extra2 := .extra2 }}
+        {{ $extra2 = replace $extra2 "present" "<span class=\"present\">present</span>" }}
+        <div class="extra">{{ $extra2 | safeHTML }}</div>
+      {{ end }}
+      {{ if .repo }}
+        {{ $repo_parts := split .repo ".com/" }}
+        {{ $repo_path := index $repo_parts (sub (len $repo_parts) 1) }}
+        <a href="{{ .repo }}" target="_blank" class="resume-repo-btn">
+          {{ $repo_path }}
+        </a>
+      {{ end }}
+    </div>
+  </div>
+  {{ with .brief }}
+  <div class="brief">
+    {{ . | markdownify }}
+  </div>
+  {{ end }}
+  {{ with .skills }}
+  <div class="skills">
+    {{ . }}
+  </div>
+  {{ end }}
+  {{ if .summary_content }}
+  <div class="sum">
+    <details>
+      <summary>{{ .summary_title | default "Show extended summary" }}</summary>
+      {{ $content := .summary_content }}
+      {{ $content = $content | replaceRE "\\n" "\n" }}
+      {{ $content | markdownify | safeHTML }}
+    </details>
+  </div>
+  {{ end }}
+</div>

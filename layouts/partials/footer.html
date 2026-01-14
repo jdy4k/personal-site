@@ -1,0 +1,42 @@
+<script>
+(function() {
+  var chevron = document.querySelector('.scroll-chevron');
+  var resume = document.querySelector('.resume-content');
+  var profile = document.querySelector('.profile');
+  var tab = document.querySelector('.profile-tab');
+  var profileThreshold = window.innerHeight;
+  
+  window.addEventListener('scroll', function() {
+    // Hide chevron after any scroll
+    if (chevron) {
+      if (window.scrollY > 10) {
+        chevron.style.display = 'none';
+      } else {
+        chevron.style.display = '';
+      }
+    }
+
+    // Show/hide profile tab and enable resume scrolling when profile out of view
+    if (window.innerWidth <= 768) {
+      if (window.scrollY >= profileThreshold) {
+        if (tab) tab.classList.add('visible');
+        if (resume) resume.classList.add('scrollable');
+        if (profile) profile.style.boxShadow = 'none';
+      } else {
+        if (tab) tab.classList.remove('visible');
+        if (resume) resume.classList.remove('scrollable');
+        if (profile) profile.style.boxShadow = '0 5px 20px grey';
+      }
+    }
+  }, { passive: true });
+  
+  // Click tab to scroll back to profile
+  if (tab) {
+    tab.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+})();
+</script>
+</body>
+</html>
