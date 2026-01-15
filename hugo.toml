@@ -7,7 +7,6 @@ unsafe = true
 
 [params]
 author = "Jack Hosler"
-bio = "Bioinformatics"
 avatarURL = "images/avatar.jpg"
 
 [[params.social]]

@@ -17,7 +17,7 @@
     }
 
     // Show/hide profile tab and enable resume scrolling when profile out of view
-    if (window.innerWidth <= 1000) {
+    if (window.innerWidth <= 768) {
       if (window.scrollY >= profileThreshold) {
         if (tab) tab.classList.add('visible');
         if (resume) resume.classList.add('scrollable');

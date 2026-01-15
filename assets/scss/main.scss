@@ -3,7 +3,12 @@
 @import 'profile';
 
 $profile-width: 30%;
-$mobile-breakpoint: 1000px;
+$mobile-breakpoint: 768px;
+
+* {
+  margin: 0;
+  padding: 0;
+}
 
 html, body {
   margin: 0;
@@ -15,14 +20,15 @@ html, body {
 }
 
 h2 {
-  font-size: 1.5em;
+  font-size: 1.75em;
   font-weight: bold;
   letter-spacing: 0.1em;
   border-bottom: 1px solid #000000;
   margin-top: 1.5em;
+  margin-bottom: 0.75em;
 
   &:first-of-type {
-    margin-top: 0em;
+    margin-top: 0.75em;
   }
   
   @media (max-width: $mobile-breakpoint) {
@@ -149,4 +155,8 @@ h2 {
   50% {
     transform: translateX(-50%) translateY(10px);
   }
+}
+
+::-webkit-scrollbar {
+  display: none;
 }

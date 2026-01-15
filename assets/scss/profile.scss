@@ -2,27 +2,26 @@
     width: 75%;
     margin: auto;
     display: block;
-    margin-top: 4em;
+    margin-top: 6em;
+    margin-bottom: 2em;
     border-radius: 5%;
     box-shadow: 0 0 5px grey;
 }
 
 .author-info {
+    display: flex;
+    flex-direction: column;
     text-align: center;
-    margin-top: 2em;
+    gap: 1em;
 }
 
 .author-name{
-    font-size: 2em;
+    font-size: 2.5em;
     font-weight: bold;
-    margin-top: 0em;
-    margin-bottom: 0.5em;    
 }
 
 .author-bio {
-    font-size: 1.25em;
-    margin-top: 0em;
-    margin-bottom: 1.5em;
+    font-size: 1.75em;
     font-weight: bold;
 }
 
