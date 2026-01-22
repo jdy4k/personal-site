@@ -27,7 +27,7 @@
     {{ end }}
   {{ end }}
 
-  <p class="resume-footer">
-    Built with Hugo © Jack Hosler. All rights reserved.
-  </p>
+  {{ with site.Params.author }}
+    <p class="resume-footer">Built with Hugo. {{ . }}. All right reserved.</p>
+  {{ end }}
 </div>
