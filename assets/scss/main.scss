@@ -102,6 +102,13 @@ h2 {
   }
 }
 
+.resume-footer {
+  text-align: center;
+  margin-top: 3em;
+  margin-bottom: 1em;
+  color: #666;
+}
+
 // Profile tab - mobile only (shows when profile scrolled away)
 .profile-tab {
   display: none;
@@ -116,8 +123,8 @@ h2 {
     border-radius: 0px;
     z-index: 1;
     cursor: pointer;
-    border: 1px solid $fg-1;
-    border-top: 0px solid $fg-1;
+    border: 1px solid black;
+    border-top: 0px solid black;
     
     
     &.visible {
