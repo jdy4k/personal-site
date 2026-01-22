@@ -4,12 +4,12 @@
 
 .main {
   border-radius: 8px;
-  background-color: $bg-1;
+  background-color: $fg-1;
   padding: 12px 15px;
   margin-bottom: 15px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.2s ease, border-left 0.1s ease;
-  border-left: 5px solid $accent-color;
+  border-left: 6px solid $accent-color;
   
   &:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -18,11 +18,11 @@
 }
 
 .complete {
-  border-left: 5px solid $fg-1;
+  border-left: 6px solid darken($fg-1, 20%);
 
   &:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    border-left: 8px solid darken($fg-1, 10%);
+    border-left: 8px solid darken($fg-1, 30%);
   }
 }
 
